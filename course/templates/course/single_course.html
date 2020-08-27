@@ -1,0 +1,7 @@
+<p>{{course.course_name}}</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit">
+</form>

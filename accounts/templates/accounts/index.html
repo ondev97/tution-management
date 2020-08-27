@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+{% for teacher in teachers %}
+    <h1>{{teacher.username}}</h1>
+    <h4>{{teacher.id}}</h4>
+    <p>{{teacher.full_name}}</p>
+<a href="{% url 'accounts:update' un=teacher.username %}">update</a>
+{% endfor %}
+
+</body>
+</html>

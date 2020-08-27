@@ -1,0 +1,6 @@
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <a href="{% url 'accounts:password_change' %}">Change Password</a>
+    <input type="submit">
+</form>
