@@ -60,7 +60,11 @@ class User(AbstractBaseUser):
     def has_module_perms(self,app_label):
         return True
 
+
 class Teacher(User):
     full_name = models.CharField(max_length=300)
     subject = models.TextField(default="text here")
 
+
+class Student(User):
+    full_name = models.CharField(max_length=300)

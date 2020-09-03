@@ -25,6 +25,7 @@ app_name='accounts'
 urlpatterns = [
     path('',views.home,name="home"),
     path('register/',views.register,name="register"),
+    path('sturegister/',views.studentregister,name="sturegister"),
     path('login/',views.login_view,name="login"),
     path('logout/',views.logout_view,name="logout"),
     path('update/<str:un>/',views.update_user,name="update"),

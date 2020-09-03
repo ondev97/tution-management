@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User,Teacher
+from .models import User,Teacher,Student
 from django.contrib.auth.admin import UserAdmin
 
 #Register your models here.
@@ -16,4 +16,5 @@ class AccountAdmin(UserAdmin):
 
 admin.site.register(User,AccountAdmin)
 admin.site.register(Teacher,AccountAdmin)
+admin.site.register(Student,AccountAdmin)
 

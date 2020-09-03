@@ -8,4 +8,5 @@
 <a href="{% url 'course:delete' pk=obj.id %}">Delete</a>
 <a href="{% url 'accounts:logout' %}">logout</a>
 <a href="{% url 'course:display' cn=obj.course_name %}">view</a>
+
 {% endfor %}

@@ -1,0 +1,5 @@
+{% for course in courses %}
+    <li>{{course.course_name}}</li>
+    <a href="{% url 'course:enroll' pk=course.id %}">enroll</a>
+
+{% endfor %}

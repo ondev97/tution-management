@@ -27,6 +27,9 @@ urlpatterns = [
   path('delete/<int:pk>/',views.delete_course,name = 'delete'),
   path('module/<int:pk>/',views.single_course,name = 'single'),
   path('module/<str:cn>/',views.course_display,name = 'display'),
+  path('enroll/<int:pk>/',views.course_enroll,name = 'enroll'),
+  path('list/',views.stucourselist,name = 'stlist'),
+  path('enrolled',views.enrolled,name = 'enroll'),
 
 ]
 

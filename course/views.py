@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
-from .forms import CourseCreationForm,AddModule
-from accounts.models import Teacher
+from django.shortcuts import render, redirect,get_object_or_404
+from .forms import CourseCreationForm,AddModule,EnrollmentForm,Enrollment
+from accounts.models import Teacher,Student
 from .models import Course, Module
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -58,3 +58,28 @@ def course_display(request,cn):
     print(course)
     modules = Module.objects.filter(course = course)
     return render(request,'course/course_unit.html',{"course":course,"module":modules})
+
+def course_enroll(request,pk):
+    objects = Course.objects.get(id=pk)
+    form = EnrollmentForm(instance=objects)
+    if request.method == "POST":
+        form = EnrollmentForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            student = Student.objects.get(username = request.user.username)
+            instance.name = objects.course_name
+            instance.course = objects
+            instance.student = student
+            instance.save()
+            print("saved")
+        else:
+            print('not saved')
+    return render(request,'course/enroll.html',{"form":form})
+
+def stucourselist(request):
+    objects = Course.objects.all()
+    return render(request,'course/list.html',{'courses':objects})
+
+def enrolled(request):
+    obj = Enrollment.objects.filter(student = request.user)
+    return render(request,'course/enrolled.html',{'courses':obj})

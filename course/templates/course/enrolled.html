@@ -1,0 +1,8 @@
+{% for c in courses %}
+
+{{c.course.course_name}}<br>
+<a href="{% url 'course:display' cn=c.course.course_name %}">Browse</a>
+{{c.course.course_content}}<br>
+
+
+{% endfor %}

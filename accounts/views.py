@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
-from .forms import RegsitrationForm,TeacherForm,AuthenticationForm,UserUpdateForm
+from .forms import RegsitrationForm,TeacherForm,AuthenticationForm,UserUpdateForm,StudentForm
 from django.contrib import messages
 from .models import Teacher
 
@@ -79,3 +79,21 @@ def update_user(request,un):
         return redirect('accounts:home')
 
     return render(request,'accounts/update.html',{"form":form})
+
+def studentregister(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        print(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request,"Resgistration success")
+            # email = form.cleaned_data.get('email')
+            # raw_password = form.cleaned_data.get('password1')
+            # account = authenticate(email=email,password=raw_password)
+            # login(request,account)
+            print("logged in")
+        else:
+            err = form.errors
+            messages.error(request,err)
+
+    return render(request,'accounts/form.html',{"form":StudentForm()})
