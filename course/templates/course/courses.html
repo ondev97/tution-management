@@ -1,10 +1,10 @@
 {% for obj in obj %}
-    <p><a href="{% url 'course:single' pk=obj.id %}">course name: {{ obj.course_name }}</a>  </p>
-    <p>author:{{ obj.author.full_name }}</p>
-    {% for obj in obj.module.all %}
-        <li>{{ obj }}</li>
-        <p>{{ obj.module_content }}</p>
-    {% endfor %}
+<p><a href="{% url 'course:single' pk=obj.id %}">course name: {{ obj.course_name }}</a> </p>
+<p>author:{{ obj.author }}</p>
+{% for obj in obj.module.all %}
+<li>{{ obj }}</li>
+<p>{{ obj.module_content }}</p>
+{% endfor %}
 <a href="{% url 'course:delete' pk=obj.id %}">Delete</a>
 <a href="{% url 'accounts:logout' %}">logout</a>
 <a href="{% url 'course:display' cn=obj.course_name %}">view</a>
