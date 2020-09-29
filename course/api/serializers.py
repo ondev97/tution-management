@@ -12,7 +12,7 @@ class TeacherSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ['course_name', 'author', ]
+        fields = '__all__'
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
