@@ -1,11 +1,10 @@
+clone the repository
 Create Virtual environment
 
 **python3 -m virtualenv venv**
 
 **source venv/bin/activate**
 
-
-clone the repository
 cd into the project directory
 **pip3 install -r requirement.txt** 
 
